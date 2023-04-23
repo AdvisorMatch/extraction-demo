@@ -5,6 +5,6 @@
         <input type="submit" />
     </form>
     {% for obj in filter.qs %}
-        {{ obj.title }} - ${{ obj.year }}<br />
+        {{ obj.title }} - {{ obj.year }}<br />
     {% endfor %}
 {% endblock %}
