@@ -1,0 +1,10 @@
+{% extends 'extraction_app/base.html' %}
+{% block content %}
+      <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    {% for obj in filter.qs %}
+        {{ obj.title }} - ${{ obj.year }}<br />
+    {% endfor %}
+{% endblock %}
