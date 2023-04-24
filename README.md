@@ -16,5 +16,4 @@ This is the demo of how the project is going to be implemented.
 - How data is obtained?
 - How keywords will be extracted?
 
-Currently, CSO classifier is not available due to the library is currently using outdated
-dependencies. [KeyBERT](https://maartengr.github.io/KeyBERT/index.html) is currently used instead
+Currently, CSO classifier is not available due to the library is currently using [outdated dependencies](https://github.com/angelosalatino/cso-classifier/issues/13). [KeyBERT](https://maartengr.github.io/KeyBERT/index.html) is currently used instead
