@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from keybert import KeyBERT
 
 # Create your views here.
 import requests
@@ -6,6 +7,9 @@ import requests
 from .filters import WorkFilter
 from .models import Work, Advisor
 from .settings import STUDENT_ID, STUDENT_EMAIIL
+
+kw_model = KeyBERT()
+
 
 def extract(request):
     """
@@ -39,6 +43,18 @@ def extract(request):
                 advisor=advisor
             )
     return render(request, 'extraction_app/extract_success.html')
+
+
 def list_works(request):
-    f = WorkFilter(request.GET, queryset=Work.objects.all() )
+    f = WorkFilter(request.GET, queryset=Work.objects.all())
     return render(request, 'extraction_app/list.html', {'filter': f})
+
+
+def work_detail(request, id):
+    work = get_object_or_404(Work, id=id)
+    # (keyword, distance)
+    keywords = kw_model.extract_keywords(work.abstract)
+    return render(request, 'extraction_app/detail.html', {
+        'work': work,
+        'keywords': keywords
+    })

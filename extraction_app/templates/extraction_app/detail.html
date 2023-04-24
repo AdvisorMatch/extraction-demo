@@ -1,0 +1,29 @@
+{% extends 'extraction_app/base.html' %}
+
+{% block title %}
+    {{ work.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ work.title }}</h1>
+    <p>{{ work.abstract }}</p>
+
+    <h2>Keywords by KeyBert</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Keyword</th>
+            <th>Distance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for keyword, distance in keywords %}
+            <tr>
+                <td>{{ keyword }}</td>
+                <td>{{ distance }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}
